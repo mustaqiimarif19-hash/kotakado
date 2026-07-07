@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotakado - Jual Kotak Kado Polos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .color-option {
+            transition: transform 0.2s, outline 0.2s;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        .color-option.selected {
+            transform: scale(1.1);
+            outline-color: #3B82F6; /* Tailwind blue-500 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" onclick="showPage('home'); return false;" class="flex-shrink-0 flex items-center gap-2">
+                        <i class="fas fa-box-open text-3xl text-blue-600"></i>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">Kotakado</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" onclick="showPage('katalog'); return false;" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Katalog</a>
+                    <a href="#" onclick="showPage('home', 'custom-order'); return false;" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm">Pesan Custom</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="page-section-home pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2 text-center md:text-left space-y-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                    Kotak Kado Polos Custom <br>
+                    <span class="text-blue-600">Sesuai Kebutuhanmu</span>
+                </h1>
+                <p class="text-lg text-gray-600 max-w-xl mx-auto md:mx-0">
+                    Bebas pilih ukuran, warna, dan material. Cocok untuk hadiah personal, packaging produk UMKM, hingga acara korporat. Langsung cek harga di bawah!
+                </p>
+                <div class="flex justify-center md:justify-start gap-4">
+                    <a href="#" onclick="document.getElementById('custom-order').scrollIntoView({ behavior: 'smooth' }); return false;" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg transform hover:-translate-y-1">Buat Sekarang</a>
+                    <a href="#" onclick="showPage('katalog'); return false;" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold border border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition shadow-sm">Lihat Inspirasi</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <!-- Gambar Hero diganti dengan foto kardus/packaging estetik -->
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop" alt="Ilustrasi Kotak Kado" class="rounded-2xl shadow-2xl mx-auto transform rotate-2 hover:rotate-0 transition duration-300 w-full h-[400px] object-cover">
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex items-center gap-3 animate-bounce">
+                    <i class="fas fa-truck-fast text-green-500 text-2xl"></i>
+                    <div>
+                        <p class="text-xs text-gray-500">Pengiriman Cepat</p>
+                        <p class="font-bold text-gray-800">Ke Seluruh Indonesia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Keunggulan -->
+    <section class="page-section-home py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-blue-50 hover:shadow-md transition">
+                    <div class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-ruler-combined text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gray-900">Custom Ukuran</h3>
+                    <p class="text-gray-600 text-sm">Bebas tentukan panjang, lebar, dan tinggi sesuai isi kado Anda tanpa batas minimal order.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-pink-50 hover:shadow-md transition">
+                    <div class="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-palette text-2xl text-pink-600"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gray-900">Beragam Warna</h3>
+                    <p class="text-gray-600 text-sm">Tersedia berbagai pilihan warna kertas pelapis berkualitas (Fancy Paper, Linen, dll).</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-green-50 hover:shadow-md transition">
+                    <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-wallet text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gray-900">Kalkulasi Instan</h3>
+                    <p class="text-gray-600 text-sm">Tidak perlu menunggu admin membalas, harga langsung terlihat saat Anda memasukkan ukuran.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Ukuran Populer -->
+    <section id="katalog" class="page-section-katalog hidden pt-24 pb-16 border-t border-gray-100 bg-gray-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Katalog Ukuran Populer</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Bingung menentukan dimensi? Pilih dari standar ukuran paling populer di bawah ini, lalu sesuaikan warnanya di form pemesanan.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1: Perhiasan -->
+                <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=600&auto=format&fit=crop" alt="Kotak Perhiasan" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900">Kotak Perhiasan</h3>
+                        <p class="text-gray-500 text-sm mb-1">Cocok untuk cincin/kalung</p>
+                        <p class="text-pink-600 font-bold mb-4">5 x 5 x 4 cm</p>
+                        <button onclick="setUkuran(5, 5, 4)" class="w-full py-2.5 bg-pink-50 text-pink-700 rounded-xl font-semibold hover:bg-pink-600 hover:text-white transition shadow-sm flex justify-center items-center gap-2">
+                            <i class="fas fa-magic"></i> Pakai Ukuran Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2: Souvenir / Mug -->
+                <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1577705998148-6da4f3963bc8?q=80&w=600&auto=format&fit=crop" alt="Kotak Souvenir" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900">Kotak Souvenir/Mug</h3>
+                        <p class="text-gray-500 text-sm mb-1">Pas untuk mug standar</p>
+                        <p class="text-blue-600 font-bold mb-4">10 x 10 x 12 cm</p>
+                        <button onclick="setUkuran(10, 10, 12)" class="w-full py-2.5 bg-blue-50 text-blue-700 rounded-xl font-semibold hover:bg-blue-600 hover:text-white transition shadow-sm flex justify-center items-center gap-2">
+                            <i class="fas fa-magic"></i> Pakai Ukuran Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3: Hijab / Baju -->
+                <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7abe515?q=80&w=600&auto=format&fit=crop" alt="Kotak Hijab" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900">Kotak Hijab/Baju</h3>
+                        <p class="text-gray-500 text-sm mb-1">Apparel / pakaian tipis</p>
+                        <p class="text-green-600 font-bold mb-4">25 x 20 x 5 cm</p>
+                        <button onclick="setUkuran(25, 20, 5)" class="w-full py-2.5 bg-green-50 text-green-700 rounded-xl font-semibold hover:bg-green-600 hover:text-white transition shadow-sm flex justify-center items-center gap-2">
+                            <i class="fas fa-magic"></i> Pakai Ukuran Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4: Sepatu / Hampers -->
+                <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?q=80&w=600&auto=format&fit=crop" alt="Kotak Sepatu" class="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg text-gray-900">Box Sepatu/Hampers</h3>
+                        <p class="text-gray-500 text-sm mb-1">Muat banyak & kokoh</p>
+                        <p class="text-orange-600 font-bold mb-4">30 x 20 x 12 cm</p>
+                        <button onclick="setUkuran(30, 20, 12)" class="w-full py-2.5 bg-orange-50 text-orange-700 rounded-xl font-semibold hover:bg-orange-600 hover:text-white transition shadow-sm flex justify-center items-center gap-2">
+                            <i class="fas fa-magic"></i> Pakai Ukuran Ini
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Custom Order & Checkout -->
+    <section id="custom-order" class="page-section-home py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Hitung & Pesan Kotak Kadomu</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Masukkan detail ukuran dan pilih warna untuk melihat perkiraan harga secara langsung.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                
+                <!-- Kolom Kiri: Input Spesifikasi -->
+                <div class="lg:w-7/12 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+                    <div class="p-6 sm:p-8 space-y-8">
+                        
+                        <!-- Dimensi -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-vector-square text-blue-500"></i> 1. Ukuran Kotak (cm)
+                            </h3>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Panjang</label>
+                                    <input type="number" id="input-p" min="5" max="100" value="20" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" oninput="calculatePrice()">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Lebar</label>
+                                    <input type="number" id="input-l" min="5" max="100" value="15" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" oninput="calculatePrice()">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Tinggi</label>
+                                    <input type="number" id="input-t" min="3" max="50" value="10" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" oninput="calculatePrice()">
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">* Minimal ukuran 5x5x3 cm.</p>
+                        </div>
+
+                        <!-- Pilihan Warna -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-fill-drip text-pink-500"></i> 2. Warna Pelapis
+                            </h3>
+                            <div class="grid grid-cols-4 sm:grid-cols-8 gap-3" id="color-picker">
+                                <!-- Colors injected by JS -->
+                            </div>
+                            <input type="hidden" id="selected-color-name" value="Hitam Elegan">
+                        </div>
+
+                        <!-- Bahan Baku (Opsional/Informasi) -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-layer-group text-yellow-500"></i> 3. Material Dasar
+                            </h3>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <p class="text-sm text-gray-700 font-medium">Yellow Board Premium (Tebal 2-3mm)</p>
+                                <p class="text-xs text-gray-500 mt-1">Sangat kokoh dan tidak mudah penyok, dilapisi kertas fancy berkualitas sesuai warna pilihan.</p>
+                            </div>
+                        </div>
+
+                        <!-- Jumlah Pesanan -->
+                         <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-boxes-stacked text-purple-500"></i> 4. Jumlah Pesanan
+                            </h3>
+                            <div class="flex items-center gap-4">
+                                <button type="button" onclick="adjustQty(-1)" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" id="input-qty" min="1" value="1" class="w-20 px-4 py-2 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none font-bold" oninput="calculatePrice()">
+                                <button type="button" onclick="adjustQty(1)" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <span class="text-sm text-gray-500 ml-2">Pcs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Rincian, Ongkir & Data Pemesan -->
+                <div class="lg:w-5/12">
+                    <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 sticky top-24">
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-6 pb-4 border-b border-gray-100">Ringkasan Pesanan</h3>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Dimensi (P x L x T)</span>
+                                <span class="font-semibold text-gray-900" id="summary-dimensi">20 x 15 x 10 cm</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Warna</span>
+                                <span class="font-semibold text-gray-900 flex items-center gap-2">
+                                    <div id="summary-color-dot" class="w-3 h-3 rounded-full bg-black"></div>
+                                    <span id="summary-color">Hitam Elegan</span>
+                                </span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Harga per Pcs</span>
+                                <span class="font-semibold text-gray-900" id="summary-price-pcs">Rp 0</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Jumlah</span>
+                                <span class="font-semibold text-gray-900" id="summary-qty">1 Pcs</span>
+                            </div>
+                            
+                            <!-- Estimasi Ongkir -->
+                            <div class="pt-4 border-t border-gray-100">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Provinsi / Kota Tujuan</label>
+                                <select id="input-kota" class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none mb-3" onchange="calculatePrice()">
+                                    <option value="0">Pilih Provinsi / Kota Tujuan...</option>
+                                    
+                                    <optgroup label="Jawa Tengah & DIY (Asal Pengiriman)">
+                                        <option value="8000">Semarang & Sekitarnya</option>
+                                        <option value="10000">Solo / Surakarta / Magelang</option>
+                                        <option value="12000">Yogyakarta (DIY)</option>
+                                        <option value="15000">Purwokerto / Banyumas / Tegal</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="Jabodetabek & Banten">
+                                        <option value="15000">DKI Jakarta</option>
+                                        <option value="16000">Bogor / Depok</option>
+                                        <option value="16000">Tangerang / Bekasi</option>
+                                        <option value="20000">Serang / Banten Lainnya</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="Jawa Barat">
+                                        <option value="15000">Bandung & Sekitarnya</option>
+                                        <option value="14000">Cirebon / Indramayu</option>
+                                        <option value="18000">Tasikmalaya / Garut / Jabar Lainnya</option>
+                                    </optgroup>
+
+                                    <optgroup label="Jawa Timur">
+                                        <option value="15000">Surabaya / Sidoarjo</option>
+                                        <option value="18000">Malang / Batu</option>
+                                        <option value="16000">Kediri / Madiun</option>
+                                        <option value="22000">Banyuwangi / Jember / Jatim Lainnya</option>
+                                    </optgroup>
+
+                                    <optgroup label="Bali & Nusa Tenggara">
+                                        <option value="25000">Denpasar / Bali</option>
+                                        <option value="35000">Mataram / Lombok (NTB)</option>
+                                        <option value="55000">Kupang / NTT</option>
+                                    </optgroup>
+
+                                    <optgroup label="Sumatera">
+                                        <option value="25000">Bandar Lampung (Lampung)</option>
+                                        <option value="30000">Palembang (Sumsel)</option>
+                                        <option value="35000">Jambi / Bengkulu</option>
+                                        <option value="40000">Padang (Sumbar) / Pekanbaru (Riau)</option>
+                                        <option value="45000">Medan (Sumut) / Batam (Kepri)</option>
+                                        <option value="60000">Banda Aceh (NAD)</option>
+                                    </optgroup>
+
+                                    <optgroup label="Kalimantan">
+                                        <option value="40000">Banjarmasin (Kalsel)</option>
+                                        <option value="45000">Balikpapan (Kaltim)</option>
+                                        <option value="45000">Pontianak (Kalbar) / Palangkaraya (Kalteng)</option>
+                                        <option value="48000">Samarinda (Kaltim)</option>
+                                        <option value="60000">Tarakan / Kaltara</option>
+                                    </optgroup>
+
+                                    <optgroup label="Sulawesi">
+                                        <option value="45000">Makassar (Sulsel)</option>
+                                        <option value="55000">Palu (Sulteng) / Kendari (Sultra)</option>
+                                        <option value="60000">Manado (Sulut) / Gorontalo</option>
+                                    </optgroup>
+
+                                    <optgroup label="Maluku & Papua">
+                                        <option value="70000">Ambon (Maluku) / Ternate (Malut)</option>
+                                        <option value="85000">Sorong / Manokwari (Papua Barat)</option>
+                                        <option value="90000">Jayapura / Timika (Papua)</option>
+                                        <option value="100000">Merauke / Wamena (Papua)</option>
+                                    </optgroup>
+                                </select>
+
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Pilihan Ekspedisi</label>
+                                <select id="input-ekspedisi" class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none mb-3" onchange="calculatePrice()">
+                                    <option value="1" data-name="JNE Reguler">JNE Reguler (2-3 Hari)</option>
+                                    <option value="1.3" data-name="JNE YES">JNE YES (1 Hari Sampai)</option>
+                                    <option value="0.95" data-name="J&T Express">J&T Express</option>
+                                    <option value="0.9" data-name="SiCepat REG">SiCepat REG</option>
+                                    <option value="0.6" data-name="Kargo (Min. 10kg)">Kargo / JTR (Min. 10kg)</option>
+                                </select>
+
+                                <div class="flex justify-between text-sm text-gray-500">
+                                    <span>Estimasi Berat/Volume:</span>
+                                    <span id="summary-weight" class="font-medium">1.0 kg</span>
+                                </div>
+                                <div class="flex justify-between text-sm text-gray-500 mt-1">
+                                    <span>Estimasi Ongkir:</span>
+                                    <span id="summary-ongkir" class="font-medium text-gray-900">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-4 rounded-xl mb-6 flex justify-between items-center">
+                            <span class="text-sm font-bold text-blue-900">Total Estimasi</span>
+                            <span class="text-2xl font-extrabold text-blue-700" id="summary-total">Rp 0</span>
+                        </div>
+
+                        <!-- Data Pembeli Form -->
+                        <form id="checkout-form" class="space-y-4" onsubmit="handleCheckout(event)">
+                            <h4 class="font-bold text-gray-900 border-b pb-2">Data Pengiriman</h4>
+                            <div>
+                                <input type="text" id="cust-name" required placeholder="Nama Lengkap" class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                            </div>
+                            <div>
+                                <input type="tel" id="cust-phone" required placeholder="No. WhatsApp (Misal: 0812...)" class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                            </div>
+                            <div>
+                                <textarea id="cust-address" required rows="2" placeholder="Alamat Lengkap (Jl, RT/RW, Kec, Kota/Kab, Kode Pos)" class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-xl"></i> Pesan via WhatsApp
+                            </button>
+                            <p class="text-xs text-center text-gray-500 mt-2">
+                                * Anda akan diarahkan ke WhatsApp untuk konfirmasi pesanan dengan admin kami.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="fas fa-box-open text-2xl text-blue-400"></i>
+                    <span class="font-bold text-xl tracking-tight">Kotakado</span>
+                </div>
+                <p class="text-gray-400 text-sm">Spesialis pembuatan kotak kado polos custom tanpa minimum order. Solusi packaging elegan untuk setiap momen berharga.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Kontak Kami</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-400"></i> +62 85157096233</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-envelope text-blue-400"></i> halo@giftboxcustom.com</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-red-400"></i> Kudus, Jawa Tengah</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Jam Operasional</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li>Senin - Jumat: 09:00 - 17:00 WIB</li>
+                    <li>Sabtu: 09:00 - 14:00 WIB</li>
+                    <li>Minggu/Libur: Tutup (Hanya balas chat)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-xs text-gray-500">
+            &copy; 2026 Kotakado.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Data Warna
+        const colors = [
+            { name: 'Hitam Elegan', hex: '#1f2937' },
+            { name: 'Putih Bersih', hex: '#f8fafc' },
+            { name: 'Merah Maroon', hex: '#7f1d1d' },
+            { name: 'Biru Navy', hex: '#1e3a8a' },
+            { name: 'Coklat Kraft', hex: '#b45309' },
+            { name: 'Pink Soft', hex: '#fbcfe8' },
+            { name: 'Hijau Sage', hex: '#86efac' },
+            { name: 'Emas/Gold', hex: '#fbbf24' }
+        ];
+
+        // --- BAGIAN UNTUK MENGEDIT HARGA ---
+        // Silakan ubah angka di bawah ini untuk menyesuaikan harga agar lebih murah/mahal
+        const HARGA_PER_CM2 = 10; // Sebelumnya 25. Ini adalah harga kertas pelapis per cm persegi
+        const BIAYA_DASAR = 8000; // Sebelumnya 5000. Ini adalah biaya jasa/kardus dasar per kotak
+
+        // Nomor WhatsApp Admin (Ganti dengan nomor asli)
+        const WA_NUMBER = "6285157096233"; // Format internasional tanpa '+'
+
+        // Fungsi Navigasi Halaman (SPA Sederhana)
+        function showPage(page, targetId = null) {
+            const homeSections = document.querySelectorAll('.page-section-home');
+            const katalogSections = document.querySelectorAll('.page-section-katalog');
+
+            if (page === 'home') {
+                homeSections.forEach(el => el.classList.remove('hidden'));
+                katalogSections.forEach(el => el.classList.add('hidden'));
+            } else if (page === 'katalog') {
+                homeSections.forEach(el => el.classList.add('hidden'));
+                katalogSections.forEach(el => el.classList.remove('hidden'));
+            }
+            
+            try {
+                // Sembunyikan tanda '#' di URL agar terlihat bersih
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            } catch (error) {
+                // Abaikan error jika dijalankan di dalam iframe/blob (lingkungan preview)
+            }
+            
+            // Scroll ke target atau ke paling atas
+            if (targetId) {
+                // Tunggu sebentar agar halaman selesai dimuat dari status tersembunyi (hidden)
+                setTimeout(() => {
+                    const element = document.getElementById(targetId);
+                    if(element) {
+                        // Sesuaikan posisi scroll (dikurangi 80px) agar tidak tertutup menu navbar di atas
+                        const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                }, 50);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Fungsi untuk mengatur ukuran langsung dari tombol Katalog
+        function setUkuran(p, l, t) {
+            // Isi form otomatis
+            document.getElementById('input-p').value = p;
+            document.getElementById('input-l').value = l;
+            document.getElementById('input-t').value = t;
+            
+            // Hitung harga terbaru sebelum menggulir
+            calculatePrice();
+
+            // Pindah kembali ke halaman Home dan scroll ke area formulir pesanan
+            showPage('home', 'custom-order');
+            
+            // Beri efek sorotan (highlight) biru pada formulir
+            setTimeout(() => {
+                const formBox = document.querySelector('#custom-order .lg\\:w-7\\/12');
+                if(formBox) {
+                    formBox.classList.add('ring-4', 'ring-blue-400', 'transition', 'duration-500');
+                    setTimeout(() => {
+                        formBox.classList.remove('ring-4', 'ring-blue-400');
+                    }, 1500);
+                }
+            }, 300); // Waktu tunggu sedikit lebih lama agar animasi scroll selesai dulu
+        }
+
+        function initColorPicker() {
+            const container = document.getElementById('color-picker');
+            const colorInput = document.getElementById('selected-color-name');
+            const summaryColorName = document.getElementById('summary-color');
+            const summaryColorDot = document.getElementById('summary-color-dot');
+
+            colors.forEach((color, index) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `w-10 h-10 rounded-full cursor-pointer color-option shadow-sm ${index === 0 ? 'selected' : ''}`;
+                btn.style.backgroundColor = color.hex;
+                btn.title = color.name;
+                
+                // Tambahkan border khusus untuk warna putih agar terlihat
+                if(color.hex === '#f8fafc') {
+                    btn.style.border = '1px solid #cbd5e1';
+                }
+
+                btn.onclick = () => {
+                    // Remove selected class from all
+                    document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
+                    // Add to clicked
+                    btn.classList.add('selected');
+                    // Update state
+                    colorInput.value = color.name;
+                    summaryColorName.textContent = color.name;
+                    summaryColorDot.style.backgroundColor = color.hex;
+                };
+
+                container.appendChild(btn);
+            });
+        }
+
+        function adjustQty(change) {
+            const input = document.getElementById('input-qty');
+            let newVal = parseInt(input.value) + change;
+            if (newVal < 1) newVal = 1;
+            input.value = newVal;
+            calculatePrice();
+        }
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        }
+
+        function calculatePrice() {
+            // 1. Get Inputs
+            const p = parseFloat(document.getElementById('input-p').value) || 0;
+            const l = parseFloat(document.getElementById('input-l').value) || 0;
+            const t = parseFloat(document.getElementById('input-t').value) || 0;
+            const qty = parseInt(document.getElementById('input-qty').value) || 1;
+            
+            const kotaSelect = document.getElementById('input-kota');
+            const ekspedisiSelect = document.getElementById('input-ekspedisi');
+            const tarifDasarKota = parseFloat(kotaSelect.value) || 0;
+            const multiplierEkspedisi = parseFloat(ekspedisiSelect.value) || 1;
+
+            // Update Summary Dimensi
+            document.getElementById('summary-dimensi').textContent = `${p} x ${l} x ${t} cm`;
+            document.getElementById('summary-qty').textContent = `${qty} Pcs`;
+
+            // 2. Kalkulasi Harga Kotak (Rumus sederhana: Luas Permukaan Balok pendekatan)
+            // Rumus Luas Permukaan = 2*(pl + pt + lt)
+            // Ditambah buffer untuk lipatan dalam (+20%)
+            const luasPermukaan = 2 * ((p * l) + (p * t) + (l * t));
+            const luasTotalDenganBuffer = luasPermukaan * 1.2;
+            
+            // Harga Material
+            const hargaMaterial = luasTotalDenganBuffer * HARGA_PER_CM2;
+            
+            // Harga Per Pcs
+            let hargaPerPcs = BIAYA_DASAR + hargaMaterial;
+            
+            // Diskon kuantitas sederhana (opsional)
+            if (qty >= 50) hargaPerPcs *= 0.85; // Diskon 15%
+            else if (qty >= 12) hargaPerPcs *= 0.90; // Diskon 10%
+            
+            // Bulatkan ke ratusan terdekat
+            hargaPerPcs = Math.ceil(hargaPerPcs / 100) * 100;
+            const totalHargaBarang = hargaPerPcs * qty;
+
+            document.getElementById('summary-price-pcs').textContent = formatRupiah(hargaPerPcs);
+
+            // 3. Kalkulasi Estimasi Berat/Ongkir
+            // Berat aktual diasumsikan bergantung pada luas permukaan (misal kardus 2mm = 0.05 gram/cm2)
+            const beratAktualGram = luasPermukaan * 0.05 * qty; 
+            
+            // Berat volumetrik rumus pengiriman (p x l x t) / 6000 * qty
+            const beratVolumeGram = ((p * l * t) / 6000) * 1000 * qty;
+
+            // Kurir biasanya mengambil yang lebih berat
+            let beratTerpakaiKg = Math.max(beratAktualGram, beratVolumeGram) / 1000;
+            
+            // Aturan khusus Kargo (minimal 10kg)
+            if (multiplierEkspedisi === 0.6 && beratTerpakaiKg < 10) {
+                beratTerpakaiKg = 10;
+            } else if (beratTerpakaiKg < 1) {
+                beratTerpakaiKg = 1; // Minimal charge reguler 1 kg
+            } else {
+                beratTerpakaiKg = Math.ceil(beratTerpakaiKg); // Pembulatan ke atas per KG
+            }
+
+            document.getElementById('summary-weight').textContent = `${beratTerpakaiKg} kg`;
+
+            const tarifPerKg = tarifDasarKota * multiplierEkspedisi;
+            const totalOngkir = beratTerpakaiKg * tarifPerKg;
+            
+            if(tarifDasarKota === 0) {
+                 document.getElementById('summary-ongkir').textContent = "Pilih Kota Tujuan";
+            } else {
+                 document.getElementById('summary-ongkir').textContent = formatRupiah(totalOngkir);
+            }
+
+            // 4. Grand Total
+            const grandTotal = totalHargaBarang + totalOngkir;
+            document.getElementById('summary-total').textContent = formatRupiah(grandTotal);
+
+            return {
+                p, l, t, qty,
+                hargaPerPcs,
+                totalHargaBarang,
+                beratTerpakaiKg,
+                totalOngkir,
+                grandTotal
+            };
+        }
+
+        function handleCheckout(event) {
+            event.preventDefault();
+
+            // Validasi Data Input
+            const p = document.getElementById('input-p').value;
+            const l = document.getElementById('input-l').value;
+            const t = document.getElementById('input-t').value;
+            
+            if(p < 5 || l < 5 || t < 3) {
+                // Sederhana, buat border merah jika tidak valid
+                alert("Mohon maaf, ukuran minimal tidak terpenuhi. (Min: 5x5x3 cm)");
+                return;
+            }
+
+            const kotaSelect = document.getElementById('input-kota');
+            if(kotaSelect.value === "0") {
+                alert("Mohon pilih kota tujuan untuk estimasi ongkir.");
+                kotaSelect.focus();
+                return;
+            }
+
+            const ekspedisiSelect = document.getElementById('input-ekspedisi');
+
+            const nama = document.getElementById('cust-name').value;
+            const hp = document.getElementById('cust-phone').value;
+            const alamat = document.getElementById('cust-address').value;
+            const warna = document.getElementById('selected-color-name').value;
+            
+            const kotaText = kotaSelect.options[kotaSelect.selectedIndex].text;
+            const ekspedisiText = ekspedisiSelect.options[ekspedisiSelect.selectedIndex].getAttribute('data-name');
+
+            // Dapatkan data kalkulasi terakhir
+            const calc = calculatePrice();
+
+            // Menyusun Pesan WhatsApp
+            const text = `Halo Admin Kotakado, saya ingin memesan kotak kado dengan detail berikut:%0A%0A` +
+                         `*--- DETAIL PRODUK ---*%0A` +
+                         `- Ukuran: ${calc.p} x ${calc.l} x ${calc.t} cm%0A` +
+                         `- Warna Pelapis: ${warna}%0A` +
+                         `- Jumlah: ${calc.qty} Pcs%0A` +
+                         `- Harga per pcs (Est): ${formatRupiah(calc.hargaPerPcs)}%0A%0A` +
+                         `*--- DATA PENGIRIMAN ---*%0A` +
+                         `- Nama: ${nama}%0A` +
+                         `- No HP: ${hp}%0A` +
+                         `- Kota Tujuan: ${kotaText}%0A` +
+                         `- Alamat Lengkap: ${alamat}%0A` +
+                         `- Ekspedisi: ${ekspedisiText}%0A%0A` +
+                         `*--- ESTIMASI BIAYA ---*%0A` +
+                         `- Total Harga Barang: ${formatRupiah(calc.totalHargaBarang)}%0A` +
+                         `- Estimasi Berat: ${calc.beratTerpakaiKg} kg%0A` +
+                         `- Estimasi Ongkir: ${formatRupiah(calc.totalOngkir)}%0A` +
+                         `*GRAND TOTAL (Est): ${formatRupiah(calc.grandTotal)}*%0A%0A` +
+                         `Mohon info ketersediaan antrian dan rekening pembayarannya ya. Terima kasih!`;
+
+            // Redirect ke WhatsApp
+            const waUrl = `https://wa.me/${WA_NUMBER}?text=${text}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            initColorPicker();
+            calculatePrice();
+        };
+    </script>
+</body>
+</html>
